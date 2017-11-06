@@ -10,13 +10,20 @@ namespace RoverList
     {
         static void Main(string[] args)
         {
-            // TODO:  Implement the RoverList class
-            // TODO:  Create a RoverList and then fill it with 16 words
+            RoverList myList = new RoverList();
+            String[] data = "Success is not final, failure is not fatal: it is the courage to continue that counts".Split(' ');
 
-            // TODO:  Print out the list
+            foreach (string a in data)
+                myList.Add(a);
 
-            // TODO:  Remove every 3rd word
-            // TODO:  Print out the list
+            myList.ListNodes();
+
+            for (int i = 0; i < myList.Count; i++)
+                if (i % 3 == 0)
+                    myList.RemoveAt(i);
+
+
+            myList.ListNodes();
 
             // TODO:  Prompt the user to input words, add those words to the list until they enter the word "done"
             // TODO:  Print out the list
