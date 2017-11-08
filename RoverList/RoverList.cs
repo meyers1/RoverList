@@ -78,15 +78,17 @@ namespace RoverList
 
         public override bool RemoveAt(int Position)
         {
-            if (count <= Position || Position < 0) return false;
-
+            if (Position >= count || Position < 0) return false;
+            
             if (Position == 0)
-                head = head.  ;
+                head = head.Next;
             else
             {
                 Node n = ElementAt(Position - 1);
-                n.Next = n.Next.Next;
+                n.Next = n.Next.Next ?? null;
             }
+
+            count--;
             return true;
         }
     }

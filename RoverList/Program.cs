@@ -17,14 +17,26 @@ namespace RoverList
                 myList.Add(a);
 
             myList.ListNodes();
+            Console.WriteLine();
 
-            for (int i = 0; i < myList.Count; i++)
+            for (int i = myList.Count; i > 0; i--)
                 if (i % 3 == 0)
-                    myList.RemoveAt(i);
+                    myList.RemoveAt(i-1);
 
 
             myList.ListNodes();
+            Console.WriteLine();
+            do
+            {
 
+            }
+            while(word.ToUpper() != "DONE")
+            {
+                myList.Add(word);
+            }
+
+            myList.ListNodes();
+            Console.WriteLine();
             // TODO:  Prompt the user to input words, add those words to the list until they enter the word "done"
             // TODO:  Print out the list
 
