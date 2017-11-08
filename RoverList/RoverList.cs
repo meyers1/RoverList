@@ -38,16 +38,25 @@ namespace RoverList
 
         public override void Add(int Position, object data)
         {
-            Node n = ElementAt(Position);
-
-            Node currentTarget = n.Next;
-
-            Node insert = new Node(data);
-            n.Next = insert;
-            insert.Next = currentTarget;
-
+            if (Position >= count)
+            {
+                Add(data);
+            }
+            else if (Position > 0)
+            {
+                Node prev = ElementAt(Position-1);
+                Node n = ElementAt(Position);
+                Node insert = new Node(data);
+                insert.Next = n;
+                prev.Next = insert;
+            }
+            else if (Position == 0)
+            {
+                Node n = ElementAt(Position);
+                head = new Node(data);
+                head.Next = n;
+            }
             count++;
-
         }
 
         public override void Clear()

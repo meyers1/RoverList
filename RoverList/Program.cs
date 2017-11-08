@@ -26,30 +26,47 @@ namespace RoverList
 
             myList.ListNodes();
             Console.WriteLine();
-            do
-            {
 
-            }
-            while(word.ToUpper() != "DONE")
+            //Prompt the user to input words, add those words to the list until they enter the word "done"
+            bool end = false;
+            while(!end)
             {
-                myList.Add(word);
+                Console.WriteLine("Input word(s) to be added to the list.  Type \"done\" when finished:");
+                string[] words = Console.ReadLine().Split(' ');
+                for (int i = 0; i < words.Length; i++)
+                {
+                    if (words[i].ToUpper() == "DONE")
+                        end = true;
+                    else
+                        myList.Add(words[i]);
+                }
             }
 
             myList.ListNodes();
             Console.WriteLine();
-            // TODO:  Prompt the user to input words, add those words to the list until they enter the word "done"
-            // TODO:  Print out the list
 
-            // TODO:  Prompt the user to input words, add those words to the FRONT of the list until they enter the word "done"
-            // TODO:  Print out the list
+            //Prompt the user to input words, add those words to the FRONT of the list until they enter the word "done"
+            end = false;
+            while (!end)
+            {
+                Console.WriteLine("Input word(s) to be added to the front of the list.  Type \"done\" when finished:");
+                string[] words = Console.ReadLine().Split(' ');
+                for (int i = 0; i < words.Length; i++)
+                {
+                    if (words[i].ToUpper() == "DONE")
+                        end = true;
+                    else
+                        myList.Add(0, words[i]);
+                }
+            }
 
+            myList.ListNodes();
+            Console.WriteLine();
             // TODO:  Remove every word with an odd length
             // TODO:  Print out the list
 
             // TODO:  Clear the list
             // TODO:  Print out the list
-
-
         }
     }
 }
