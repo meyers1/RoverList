@@ -10,28 +10,32 @@ namespace RoverList
     {
         static void Main(string[] args)
         {
+            //Create a RoverList and then fill it with 16 words
             RoverList myList = new RoverList();
             String[] data = "Success is not final, failure is not fatal: it is the courage to continue that counts".Split(' ');
 
             foreach (string a in data)
                 myList.Add(a);
 
+            //Print out the list
+            Console.Write("LIST: ");
             myList.ListNodes();
             Console.WriteLine();
-
+            //Remove every 3rd word
             for (int i = myList.Count; i > 0; i--)
                 if (i % 3 == 0)
                     myList.RemoveAt(i-1);
 
-
+            //Print out the list
+            Console.Write("\nLIST: ");
             myList.ListNodes();
-            Console.WriteLine();
+            Console.WriteLine("\n");
 
             //Prompt the user to input words, add those words to the list until they enter the word "done"
             bool end = false;
             while(!end)
             {
-                Console.WriteLine("Input word(s) to be added to the list.  Type \"done\" when finished:");
+                Console.WriteLine("Input word(s) to be added to the list.  Type \"done\" when finished: ");
                 string[] words = Console.ReadLine().Split(' ');
                 for (int i = 0; i < words.Length; i++)
                 {
@@ -42,8 +46,10 @@ namespace RoverList
                 }
             }
 
+            //Print out the list
+            Console.Write("\nLIST: ");
             myList.ListNodes();
-            Console.WriteLine();
+            Console.WriteLine("\n");
 
             //Prompt the user to input words, add those words to the FRONT of the list until they enter the word "done"
             end = false;
@@ -60,13 +66,30 @@ namespace RoverList
                 }
             }
 
+            //Print out the list
+            Console.Write("\nLIST: ");
             myList.ListNodes();
             Console.WriteLine();
-            // TODO:  Remove every word with an odd length
-            // TODO:  Print out the list
 
-            // TODO:  Clear the list
-            // TODO:  Print out the list
+            //Remove every word with an odd length
+            for (int i = myList.Count-1; i >= 0; i--)
+            {
+                if (((string)myList.ElementAt(i).Data).Length % 2 != 0)
+                    myList.RemoveAt(i);
+            }
+
+            //Print out the list
+            Console.Write("\nLIST: ");
+            myList.ListNodes();
+            Console.WriteLine();
+
+            //Clear the list
+            myList.Clear();
+
+            //Print out the list
+            Console.Write("\nLIST: ");
+            myList.ListNodes();
+            Console.WriteLine("\n");
         }
     }
 }
